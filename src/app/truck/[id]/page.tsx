@@ -4,11 +4,12 @@ import { notFound } from 'next/navigation';
 import FoodTruckDetail from '@/components/FoodTruckDetail';
 
 interface Props {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const truck = FoodTruckService.getTruckById(params.id);
+  const { id } = await params;
+  const truck = FoodTruckService.getTruckById(id);
   
   if (!truck) {
     return {
@@ -36,6 +37,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: 'website',
       locale: 'en_US',
       siteName: 'FoodTruck Finder',
+      images: truck.images.length > 0 ? [truck.images[0]] : undefined,
     },
     twitter: {
       card: 'summary_large_image',
@@ -43,7 +45,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: generateSEODescription(truck),
     },
     alternates: {
-      canonical: `/truck/${truck.id}`,
+      canonical: `/truck/${id}`,
     },
   };
 }
@@ -55,8 +57,9 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function TruckPage({ params }: Props) {
-  const truck = FoodTruckService.getTruckById(params.id);
+export default async function TruckPage({ params }: Props) {
+  const { id } = await params;
+  const truck = FoodTruckService.getTruckById(id);
 
   if (!truck) {
     notFound();

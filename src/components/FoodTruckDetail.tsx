@@ -4,9 +4,10 @@ import { FoodTruck } from '@/types/foodtruck';
 import { formatPriceRange } from '@/lib/foodTruckService';
 import { 
   Star, MapPin, Clock, Phone, Globe, Instagram, Facebook, Twitter,
-  Calendar, ChefHat, Tag, ArrowLeft, Share2, Heart
+  Calendar, ChefHat, Tag, ArrowLeft, Share2, Heart, ExternalLink
 } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
 
 interface FoodTruckDetailProps {
@@ -95,9 +96,21 @@ export default function FoodTruckDetail({ truck }: FoodTruckDetailProps) {
           <div className="lg:col-span-2">
             {/* Hero Image */}
             <div className="aspect-w-16 aspect-h-9 mb-8">
-              <div className="w-full h-64 md:h-96 bg-gradient-to-br from-blue-400 to-purple-500 rounded-lg flex items-center justify-center">
-                <span className="text-white text-6xl font-bold">{truck.name.charAt(0)}</span>
-              </div>
+              {truck.images && truck.images.length > 0 && truck.images[0] !== '' ? (
+                <div className="relative w-full h-64 md:h-96 rounded-lg overflow-hidden">
+                  <Image
+                    src={truck.images[0]}
+                    alt={truck.name}
+                    fill
+                    className="object-cover"
+                    unoptimized
+                  />
+                </div>
+              ) : (
+                <div className="w-full h-64 md:h-96 bg-gradient-to-br from-blue-400 to-purple-500 rounded-lg flex items-center justify-center">
+                  <span className="text-white text-6xl font-bold">{truck.name.charAt(0)}</span>
+                </div>
+              )}
             </div>
 
             {/* Main Info */}
@@ -215,7 +228,7 @@ export default function FoodTruckDetail({ truck }: FoodTruckDetailProps) {
               <h3 className="text-lg font-semibold text-gray-900 mb-4">Contact Information</h3>
               
               <div className="space-y-4">
-                {truck.phone && (
+                {truck.phone && truck.phone !== '' && (
                   <div className="flex items-center">
                     <Phone className="h-5 w-5 text-gray-400 mr-3" />
                     <a href={`tel:${truck.phone}`} className="text-blue-600 hover:text-blue-700">
@@ -224,16 +237,17 @@ export default function FoodTruckDetail({ truck }: FoodTruckDetailProps) {
                   </div>
                 )}
 
-                {truck.website && (
+                {truck.website && truck.website !== '' && (
                   <div className="flex items-center">
                     <Globe className="h-5 w-5 text-gray-400 mr-3" />
                     <a 
                       href={truck.website} 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="text-blue-600 hover:text-blue-700"
+                      className="text-blue-600 hover:text-blue-700 flex items-center"
                     >
-                      Visit Website
+                      View on Yelp
+                      <ExternalLink className="h-4 w-4 ml-1" />
                     </a>
                   </div>
                 )}
@@ -292,12 +306,26 @@ export default function FoodTruckDetail({ truck }: FoodTruckDetailProps) {
 
               {/* Quick Actions */}
               <div className="mt-6 space-y-3">
-                <button className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg font-medium hover:bg-blue-700 transition-colors">
-                  Get Directions
-                </button>
-                <button className="w-full bg-green-600 text-white py-3 px-4 rounded-lg font-medium hover:bg-green-700 transition-colors">
-                  Call Now
-                </button>
+                {truck.website && truck.website !== '' && (
+                  <a
+                    href={truck.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg font-medium hover:bg-blue-700 transition-colors flex items-center justify-center"
+                  >
+                    <ExternalLink className="h-4 w-4 mr-2" />
+                    View on Yelp
+                  </a>
+                )}
+                {truck.phone && truck.phone !== '' && (
+                  <a
+                    href={`tel:${truck.phone}`}
+                    className="w-full bg-green-600 text-white py-3 px-4 rounded-lg font-medium hover:bg-green-700 transition-colors flex items-center justify-center"
+                  >
+                    <Phone className="h-4 w-4 mr-2" />
+                    Call Now
+                  </a>
+                )}
               </div>
             </div>
 

@@ -1,8 +1,8 @@
 import { FoodTruck, FilterOptions, City } from '@/types/foodtruck';
-import { MOCK_FOOD_TRUCKS } from '@/data/foodTruckGenerator';
+import { YELP_FOOD_TRUCKS } from '@/data/yelpFoodTrucks';
 
 export class FoodTruckService {
-  private static trucks: FoodTruck[] = MOCK_FOOD_TRUCKS;
+  private static trucks: FoodTruck[] = YELP_FOOD_TRUCKS;
 
   static getAllTrucks(): FoodTruck[] {
     return this.trucks;

@@ -3,10 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build --turbopack",
+    "dev": "next dev",
+    "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "generate-data": "node src/scripts/generateFoodTruckData.mjs",
+    "build-with-data": "npm run generate-data && npm run build",
+    "export": "next build && next export"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.8",

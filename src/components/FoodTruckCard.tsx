@@ -2,6 +2,7 @@ import { FoodTruck } from '@/types/foodtruck';
 import { formatPriceRange } from '@/lib/foodTruckService';
 import { Star, MapPin, Clock, Phone, Globe, Sparkles } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface FoodTruckCardProps {
   truck: FoodTruck;
@@ -27,6 +28,19 @@ export default function FoodTruckCard({ truck }: FoodTruckCardProps) {
         <div className="absolute top-2 right-2 text-white text-2xl animate-spin">⭐</div>
         <div className="absolute bottom-2 left-2 text-white text-xl opacity-70">🚚</div>
         
+        {/* Food truck image if available */}
+        {truck.images && truck.images.length > 0 && truck.images[0] !== '' && (
+          <div className="absolute inset-0 opacity-20">
+            <Image
+              src={truck.images[0]}
+              alt={truck.name}
+              fill
+              className="object-cover"
+              unoptimized
+            />
+          </div>
+        )}
+        
         {/* Truck name with retro styling */}
         <div className="relative z-10">
           <div className="w-20 h-20 bg-white border-4 border-black rounded-full flex items-center justify-center mb-4 mx-auto shadow-lg">
@@ -49,7 +63,7 @@ export default function FoodTruckCard({ truck }: FoodTruckCardProps) {
         <div className="flex items-center justify-center mb-3 bg-black text-white px-4 py-2 rounded-full">
           <MapPin className="h-4 w-4 mr-2" />
           <span className="text-sm font-bold" style={{ fontFamily: "'Righteous', cursive" }}>
-            {truck.city}, {truck.state}, {truck.country}
+            {truck.city}, {truck.state}
           </span>
         </div>
 
@@ -107,12 +121,12 @@ export default function FoodTruckCard({ truck }: FoodTruckCardProps) {
         {/* Action area with retro styling */}
         <div className="flex justify-between items-center pt-4 border-t-4 border-black border-dashed">
           <div className="flex space-x-2">
-            {truck.phone && (
+            {truck.phone && truck.phone !== '' && (
               <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
                 <Phone className="h-4 w-4 text-white" />
               </div>
             )}
-            {truck.website && (
+            {truck.website && truck.website !== '' && (
               <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
                 <Globe className="h-4 w-4 text-white" />
               </div>

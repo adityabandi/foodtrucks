@@ -4,13 +4,14 @@ import { notFound } from 'next/navigation';
 import CityPage from '@/components/CityPage';
 
 interface Props {
-  params: { city: string };
+  params: Promise<{ city: string }>;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const cityName = params.city.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+  const { city } = await params;
+  const cityName = city.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
   const trucks = FoodTruckService.getAllTrucks().filter(truck => 
-    generateSlug(truck.city) === params.city
+    generateSlug(truck.city) === city
   );
   
   if (trucks.length === 0) {
@@ -43,7 +44,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       siteName: 'FoodTruck Finder',
     },
     alternates: {
-      canonical: `/city/${params.city}`,
+      canonical: `/city/${city}`,
     },
   };
 }
@@ -55,10 +56,11 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function CityPageRoute({ params }: Props) {
-  const cityName = params.city.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+export default async function CityPageRoute({ params }: Props) {
+  const { city } = await params;
+  const cityName = city.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
   const trucks = FoodTruckService.getAllTrucks().filter(truck => 
-    generateSlug(truck.city) === params.city
+    generateSlug(truck.city) === city
   );
 
   if (trucks.length === 0) {
