@@ -1,15 +1,16 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { FilterOptions } from '@/types/foodtruck';
+import { FilterOptions, FoodTruck } from '@/types/foodtruck';
 import { FoodTruckService } from '@/lib/foodTruckService';
+import FoodTruckCard from '@/components/FoodTruckCard';
 import { Search, Filter, X } from 'lucide-react';
 
 interface SearchFiltersProps {
-  onFiltersChange: (filters: FilterOptions) => void;
+  initialTrucks: FoodTruck[];
 }
 
-const SearchFilters = ({ onFiltersChange }: SearchFiltersProps) => {
+const SearchFilters = ({ initialTrucks }: SearchFiltersProps) => {
   const [search, setSearch] = useState('');
   const [selectedCity, setSelectedCity] = useState('');
   const [selectedState, setSelectedState] = useState('');
@@ -17,6 +18,7 @@ const SearchFilters = ({ onFiltersChange }: SearchFiltersProps) => {
   const [selectedPriceRanges, setSelectedPriceRanges] = useState<string[]>([]);
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [showAdvanced, setShowAdvanced] = useState(false);
+  const [filteredTrucks, setFilteredTrucks] = useState<FoodTruck[]>(initialTrucks);
 
   const cities = FoodTruckService.getCities();
   const cuisines = FoodTruckService.getCuisines();
@@ -32,7 +34,8 @@ const SearchFilters = ({ onFiltersChange }: SearchFiltersProps) => {
       priceRange: selectedPriceRanges.length > 0 ? selectedPriceRanges : undefined,
       tags: selectedTags.length > 0 ? selectedTags : undefined,
     };
-    onFiltersChange(filters);
+    const filtered = FoodTruckService.searchTrucks(filters);
+    setFilteredTrucks(filtered);
   }, [search, selectedCity, selectedState, selectedCuisines, selectedPriceRanges, selectedTags]);
 
   const clearAllFilters = () => {
@@ -197,6 +200,50 @@ const SearchFilters = ({ onFiltersChange }: SearchFiltersProps) => {
           </button>
         </div>
       )}
+
+      {/* Results */}
+      <div className="mt-12">
+        <div className="flex justify-between items-center mb-8">
+          <div className="jukebox-card bg-gradient-to-r from-red-500 to-blue-500 px-6 py-4">
+            <h3 className="text-xl font-bold text-white">
+              {filteredTrucks.length.toLocaleString()} Diners Found
+            </h3>
+          </div>
+          <div className="bg-black text-yellow-400 px-4 py-2 rounded-lg border-2 border-yellow-400">
+            <span className="font-semibold">
+              Showing {filteredTrucks.length > 0 ? '1' : '0'}-{Math.min(filteredTrucks.length, 24)} of {filteredTrucks.length.toLocaleString()}
+            </span>
+          </div>
+        </div>
+
+        {filteredTrucks.length === 0 ? (
+          <div className="text-center py-16">
+            <div className="w-32 h-32 bg-gray-200 rounded-lg flex items-center justify-center mx-auto mb-6 border-3 border-black">
+              <span className="text-5xl">😔</span>
+            </div>
+            <h3 className="text-xl font-bold text-gray-900 mb-4">
+              No diners found
+            </h3>
+            <p className="text-gray-600 font-medium">
+              Try adjusting your search filters to find more results.
+            </p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            {filteredTrucks.slice(0, 24).map((truck) => (
+              <FoodTruckCard key={truck.id} truck={truck} />
+            ))}
+          </div>
+        )}
+
+        {filteredTrucks.length > 24 && (
+          <div className="text-center mt-12">
+            <button className="diner-button px-10 py-4 text-lg font-bold hover:shadow-lg transition-all">
+              LOAD MORE DINERS
+            </button>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
