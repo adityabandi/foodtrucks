@@ -1,8 +1,10 @@
 import { MetadataRoute } from 'next';
 import { FoodTruckService, generateSlug } from '@/lib/foodTruckService';
 
+export const dynamic = 'force-static';
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://foodtruckfinder.com';
+  const baseUrl = 'https://adityabandi.github.io/foodtrucks';
   
   const trucks = FoodTruckService.getAllTrucks();
   const cities = FoodTruckService.getCities();
