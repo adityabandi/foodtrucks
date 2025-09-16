@@ -1,30 +1,62 @@
 import { FoodTruck, FilterOptions, City } from '@/types/foodtruck';
-import { MOCK_FOOD_TRUCKS } from '@/data/foodTruckGenerator';
+import { FoodTruckAPIService } from './realFoodTruckAPI';
+
+// Fallback to sample data for development - replace with real API data
+const USE_SAMPLE_DATA = process.env.NEXT_PUBLIC_USE_SAMPLE_DATA === 'true';
 
 export class FoodTruckService {
-  private static trucks: FoodTruck[] = MOCK_FOOD_TRUCKS;
+  private static trucks: FoodTruck[] = [];
+  private static initialized: boolean = false;
 
-  static getAllTrucks(): FoodTruck[] {
+  // Initialize with real API data
+  private static async initializeData(): Promise<void> {
+    if (this.initialized) return;
+    
+    try {
+      if (USE_SAMPLE_DATA || !process.env.NEXT_PUBLIC_YELP_API_KEY) {
+        console.log('🔧 Using sample real food truck data (development mode)');
+        this.trucks = await FoodTruckAPIService.getSampleRealFoodTrucks();
+      } else {
+        console.log('🌐 Fetching real food truck data from APIs...');
+        this.trucks = await FoodTruckAPIService.fetchAllRealFoodTrucks();
+      }
+      
+      this.initialized = true;
+      console.log(`✅ Loaded ${this.trucks.length} real food trucks`);
+    } catch (error) {
+      console.error('❌ Failed to load real food truck data:', error);
+      // Fallback to sample data
+      this.trucks = await FoodTruckAPIService.getSampleRealFoodTrucks();
+      this.initialized = true;
+    }
+  }
+
+  static async getAllTrucks(): Promise<FoodTruck[]> {
+    await this.initializeData();
     return this.trucks;
   }
 
-  static getTruckById(id: string): FoodTruck | undefined {
+  static async getTruckById(id: string): Promise<FoodTruck | undefined> {
+    await this.initializeData();
     return this.trucks.find(truck => truck.id === id);
   }
 
-  static getTrucksByCity(city: string): FoodTruck[] {
+  static async getTrucksByCity(city: string): Promise<FoodTruck[]> {
+    await this.initializeData();
     return this.trucks.filter(truck => 
       truck.city.toLowerCase() === city.toLowerCase()
     );
   }
 
-  static getTrucksByState(state: string): FoodTruck[] {
+  static async getTrucksByState(state: string): Promise<FoodTruck[]> {
+    await this.initializeData();
     return this.trucks.filter(truck => 
       truck.state.toLowerCase() === state.toLowerCase()
     );
   }
 
-  static searchTrucks(filters: FilterOptions): FoodTruck[] {
+  static async searchTrucks(filters: FilterOptions): Promise<FoodTruck[]> {
+    await this.initializeData();
     let filteredTrucks = [...this.trucks];
 
     if (filters.city) {
@@ -86,7 +118,8 @@ export class FoodTruckService {
     return filteredTrucks;
   }
 
-  static getCities(): City[] {
+  static async getCities(): Promise<City[]> {
+    await this.initializeData();
     const cityMap = new Map<string, City>();
     
     this.trucks.forEach(truck => {
@@ -107,7 +140,8 @@ export class FoodTruckService {
       .sort((a, b) => b.count - a.count);
   }
 
-  static getCountries(): string[] {
+  static async getCountries(): Promise<string[]> {
+    await this.initializeData();
     const countrySet = new Set<string>();
     this.trucks.forEach(truck => {
       countrySet.add(truck.country);
@@ -115,7 +149,8 @@ export class FoodTruckService {
     return Array.from(countrySet).sort();
   }
 
-  static getCuisines(): string[] {
+  static async getCuisines(): Promise<string[]> {
+    await this.initializeData();
     const cuisineSet = new Set<string>();
     this.trucks.forEach(truck => {
       truck.cuisine.forEach(c => cuisineSet.add(c));
@@ -123,7 +158,8 @@ export class FoodTruckService {
     return Array.from(cuisineSet).sort();
   }
 
-  static getTags(): string[] {
+  static async getTags(): Promise<string[]> {
+    await this.initializeData();
     const tagSet = new Set<string>();
     this.trucks.forEach(truck => {
       truck.tags.forEach(t => tagSet.add(t));
@@ -131,23 +167,33 @@ export class FoodTruckService {
     return Array.from(tagSet).sort();
   }
 
-  static getFeaturedTrucks(limit: number = 6): FoodTruck[] {
+  static async getFeaturedTrucks(limit: number = 6): Promise<FoodTruck[]> {
+    await this.initializeData();
     return this.trucks
       .filter(truck => truck.rating && truck.rating >= 4.5)
       .sort((a, b) => (b.rating || 0) - (a.rating || 0))
       .slice(0, limit);
   }
 
-  static getRecentlyAdded(limit: number = 6): FoodTruck[] {
+  static async getRecentlyAdded(limit: number = 6): Promise<FoodTruck[]> {
+    await this.initializeData();
     return this.trucks
       .sort((a, b) => new Date(b.lastUpdated).getTime() - new Date(a.lastUpdated).getTime())
       .slice(0, limit);
   }
 
-  static getStats() {
-    const cities = this.getCities().length;
+  static async getStats(): Promise<{
+    totalTrucks: number;
+    cities: number;
+    states: number;
+    cuisines: number;
+    totalReviews: number;
+    avgRating: number;
+  }> {
+    await this.initializeData();
+    const cities = (await this.getCities()).length;
     const states = new Set(this.trucks.map(t => t.state)).size;
-    const cuisines = this.getCuisines().length;
+    const cuisines = (await this.getCuisines()).length;
     const totalReviews = this.trucks.reduce((sum, truck) => sum + (truck.reviewCount || 0), 0);
     const avgRating = this.trucks.reduce((sum, truck) => sum + (truck.rating || 0), 0) / this.trucks.length;
 

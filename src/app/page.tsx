@@ -6,11 +6,11 @@ import StatsSection from '@/components/StatsSection';
 import { Truck, MapPin, Users } from 'lucide-react';
 import Link from 'next/link';
 
-export default function Home() {
-  // Generate data at build time for static pages
-  const trucks = FoodTruckService.getAllTrucks();
-  const stats = FoodTruckService.getStats();
-  const featuredTrucks = FoodTruckService.getFeaturedTrucks(6);
+export default async function Home() {
+  // Generate data at build time for static pages using real APIs
+  const trucks = await FoodTruckService.getAllTrucks();
+  const stats = await FoodTruckService.getStats();
+  const featuredTrucks = await FoodTruckService.getFeaturedTrucks(6);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-yellow-50 via-red-50 to-blue-50">

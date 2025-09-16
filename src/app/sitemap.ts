@@ -3,11 +3,11 @@ import { FoodTruckService, generateSlug } from '@/lib/foodTruckService';
 
 export const dynamic = 'force-static';
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://adityabandi.github.io/foodtrucks';
   
-  const trucks = FoodTruckService.getAllTrucks();
-  const cities = FoodTruckService.getCities();
+  const trucks = await FoodTruckService.getAllTrucks();
+  const cities = await FoodTruckService.getCities();
   
   // Base pages
   const routes: MetadataRoute.Sitemap = [

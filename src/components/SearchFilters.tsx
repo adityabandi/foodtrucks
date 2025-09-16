@@ -19,24 +19,107 @@ const SearchFilters = ({ initialTrucks }: SearchFiltersProps) => {
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [showAdvanced, setShowAdvanced] = useState(false);
   const [filteredTrucks, setFilteredTrucks] = useState<FoodTruck[]>(initialTrucks);
+  
+  // State for async loaded filter options
+  const [cities, setCities] = useState<{ name: string; state: string; country: string; count: number }[]>([]);
+  const [cuisines, setCuisines] = useState<string[]>([]);
+  const [tags, setTags] = useState<string[]>([]);
+  const [states, setStates] = useState<string[]>([]);
 
-  const cities = FoodTruckService.getCities();
-  const cuisines = FoodTruckService.getCuisines();
-  const tags = FoodTruckService.getTags();
-  const states = [...new Set(cities.map(c => c.state))].sort();
+  // Load filter options on component mount
+  useEffect(() => {
+    const loadFilterOptions = async () => {
+      try {
+        const [loadedCities, loadedCuisines, loadedTags] = await Promise.all([
+          FoodTruckService.getCities(),
+          FoodTruckService.getCuisines(),
+          FoodTruckService.getTags()
+        ]);
+        
+        setCities(loadedCities);
+        setCuisines(loadedCuisines);
+        setTags(loadedTags);
+        setStates([...new Set(loadedCities.map(c => c.state))].sort());
+      } catch (error) {
+        console.error('Failed to load filter options:', error);
+        // Fallback to extracting from initial trucks
+        const citySet = new Set(initialTrucks.map(t => t.city));
+        const stateSet = new Set(initialTrucks.map(t => t.state));
+        const cuisineSet = new Set(initialTrucks.flatMap(t => t.cuisine));
+        const tagSet = new Set(initialTrucks.flatMap(t => t.tags));
+        
+        setCities(Array.from(citySet).map(city => ({
+          name: city,
+          state: initialTrucks.find(t => t.city === city)?.state || '',
+          country: initialTrucks.find(t => t.city === city)?.country || '',
+          count: initialTrucks.filter(t => t.city === city).length
+        })).sort((a, b) => b.count - a.count));
+        
+        setStates(Array.from(stateSet).sort());
+        setCuisines(Array.from(cuisineSet).sort());
+        setTags(Array.from(tagSet).sort());
+      }
+    };
+    
+    loadFilterOptions();
+  }, [initialTrucks]);
 
   useEffect(() => {
-    const filters: FilterOptions = {
-      search: search || undefined,
-      city: selectedCity || undefined,
-      state: selectedState || undefined,
-      cuisine: selectedCuisines.length > 0 ? selectedCuisines : undefined,
-      priceRange: selectedPriceRanges.length > 0 ? selectedPriceRanges : undefined,
-      tags: selectedTags.length > 0 ? selectedTags : undefined,
+    const applyFilters = async () => {
+      const filters: FilterOptions = {
+        search: search || undefined,
+        city: selectedCity || undefined,
+        state: selectedState || undefined,
+        cuisine: selectedCuisines.length > 0 ? selectedCuisines : undefined,
+        priceRange: selectedPriceRanges.length > 0 ? selectedPriceRanges : undefined,
+        tags: selectedTags.length > 0 ? selectedTags : undefined,
+      };
+      
+      try {
+        const filtered = await FoodTruckService.searchTrucks(filters);
+        setFilteredTrucks(filtered);
+      } catch (error) {
+        console.error('Failed to search trucks:', error);
+        // Fallback to client-side filtering
+        let filtered = [...initialTrucks];
+        
+        if (filters.search) {
+          const searchTerm = filters.search.toLowerCase();
+          filtered = filtered.filter(truck =>
+            truck.name.toLowerCase().includes(searchTerm) ||
+            truck.description.toLowerCase().includes(searchTerm) ||
+            truck.cuisine.some(c => c.toLowerCase().includes(searchTerm))
+          );
+        }
+        
+        if (filters.city) {
+          filtered = filtered.filter(truck =>
+            truck.city.toLowerCase().includes(filters.city!.toLowerCase())
+          );
+        }
+        
+        if (filters.state) {
+          filtered = filtered.filter(truck =>
+            truck.state.toLowerCase() === filters.state!.toLowerCase()
+          );
+        }
+        
+        if (filters.cuisine && filters.cuisine.length > 0) {
+          filtered = filtered.filter(truck =>
+            truck.cuisine.some(c => 
+              filters.cuisine!.some(fc => 
+                c.toLowerCase().includes(fc.toLowerCase())
+              )
+            )
+          );
+        }
+        
+        setFilteredTrucks(filtered);
+      }
     };
-    const filtered = FoodTruckService.searchTrucks(filters);
-    setFilteredTrucks(filtered);
-  }, [search, selectedCity, selectedState, selectedCuisines, selectedPriceRanges, selectedTags]);
+    
+    applyFilters();
+  }, [search, selectedCity, selectedState, selectedCuisines, selectedPriceRanges, selectedTags, initialTrucks]);
 
   const clearAllFilters = () => {
     setSearch('');
