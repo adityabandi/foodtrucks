@@ -1,6 +1,6 @@
 import { FoodTruck } from '@/types/foodtruck';
 import { formatPriceRange } from '@/lib/foodTruckService';
-import { Star, MapPin, Clock, Phone, Globe } from 'lucide-react';
+import { Star, MapPin, Clock, Phone, Globe, Sparkles } from 'lucide-react';
 import Link from 'next/link';
 
 interface FoodTruckCardProps {
@@ -8,88 +8,126 @@ interface FoodTruckCardProps {
 }
 
 export default function FoodTruckCard({ truck }: FoodTruckCardProps) {
+  const cardColors = [
+    'from-red-400 to-red-600',
+    'from-blue-400 to-blue-600', 
+    'from-yellow-400 to-yellow-600',
+    'from-green-400 to-green-600',
+    'from-purple-400 to-purple-600',
+    'from-pink-400 to-pink-600'
+  ];
+  
+  const randomColor = cardColors[Math.floor(Math.random() * cardColors.length)];
+
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
-      <div className="aspect-w-16 aspect-h-9 bg-gray-200">
-        <div className="w-full h-48 bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center">
-          <span className="text-white text-4xl font-bold">{truck.name.charAt(0)}</span>
+    <div className="jukebox-card hover:scale-105 hover:rotate-1 transition-all duration-500 group cursor-pointer bg-white">
+      {/* Retro header with gradient */}
+      <div className={`bg-gradient-to-r ${randomColor} p-6 relative overflow-hidden`}>
+        {/* Decorative elements */}
+        <div className="absolute top-2 right-2 text-white text-2xl animate-spin">⭐</div>
+        <div className="absolute bottom-2 left-2 text-white text-xl opacity-70">🚚</div>
+        
+        {/* Truck name with retro styling */}
+        <div className="relative z-10">
+          <div className="w-20 h-20 bg-white border-4 border-black rounded-full flex items-center justify-center mb-4 mx-auto shadow-lg">
+            <span className="text-3xl font-black text-black" style={{ fontFamily: "'Fredoka One', cursive" }}>
+              {truck.name.charAt(0)}
+            </span>
+          </div>
+          
+          <h3 className="text-xl font-black text-white text-center retro-shadow leading-tight"
+              style={{ fontFamily: "'Righteous', cursive" }}>
+            <Link href={`/truck/${truck.id}`} className="hover:text-yellow-200 transition-colors">
+              {truck.name.replace(` - ${truck.city}`, '')}
+            </Link>
+          </h3>
         </div>
       </div>
       
-      <div className="p-6">
-        <div className="flex justify-between items-start mb-3">
-          <h3 className="text-lg font-semibold text-gray-900 leading-tight">
-            <Link href={`/truck/${truck.id}`} className="hover:text-blue-600">
-              {truck.name}
-            </Link>
-          </h3>
-          <div className="flex items-center space-x-1">
-            <span className="text-sm font-medium text-gray-600">
-              {formatPriceRange(truck.priceRange)}
-            </span>
-          </div>
+      <div className="p-6 bg-white">
+        {/* Location with fun styling */}
+        <div className="flex items-center justify-center mb-3 bg-black text-white px-4 py-2 rounded-full">
+          <MapPin className="h-4 w-4 mr-2" />
+          <span className="text-sm font-bold" style={{ fontFamily: "'Righteous', cursive" }}>
+            {truck.city}, {truck.state}, {truck.country}
+          </span>
         </div>
 
-        <div className="flex items-center mb-2">
-          <MapPin className="h-4 w-4 text-gray-400 mr-1" />
-          <span className="text-sm text-gray-600">{truck.city}, {truck.state}</span>
+        {/* Price and rating */}
+        <div className="flex justify-between items-center mb-4">
+          <div className="bg-yellow-400 text-black px-3 py-1 rounded-full border-2 border-black">
+            <span className="text-lg font-black">{formatPriceRange(truck.priceRange)}</span>
+          </div>
+          
+          {truck.rating && (
+            <div className="flex items-center bg-green-400 text-black px-3 py-1 rounded-full border-2 border-black">
+              <Star className="h-4 w-4 fill-current mr-1" />
+              <span className="font-black">{truck.rating}</span>
+              <span className="text-xs ml-1">({truck.reviewCount})</span>
+            </div>
+          )}
         </div>
 
-        {truck.rating && (
-          <div className="flex items-center mb-3">
-            <Star className="h-4 w-4 text-yellow-400 fill-current" />
-            <span className="text-sm font-medium text-gray-900 ml-1">
-              {truck.rating}
-            </span>
-            <span className="text-sm text-gray-600 ml-1">
-              ({truck.reviewCount} reviews)
-            </span>
-          </div>
-        )}
-
-        <p className="text-gray-600 text-sm mb-4 line-clamp-2">
+        {/* Description with fun font */}
+        <p className="text-gray-700 text-sm mb-4 line-clamp-2 font-medium leading-relaxed">
           {truck.description}
         </p>
 
+        {/* Cuisine tags with rainbow colors */}
         <div className="flex flex-wrap gap-2 mb-4">
-          {truck.cuisine.slice(0, 3).map((cuisine) => (
-            <span
-              key={cuisine}
-              className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full"
-            >
-              {cuisine}
-            </span>
-          ))}
+          {truck.cuisine.slice(0, 3).map((cuisine, index) => {
+            const tagColors = ['bg-red-200 text-red-800', 'bg-blue-200 text-blue-800', 'bg-green-200 text-green-800'];
+            return (
+              <span
+                key={cuisine}
+                className={`px-3 py-1 ${tagColors[index % tagColors.length]} text-xs rounded-full font-bold border-2 border-black`}
+                style={{ fontFamily: "'Righteous', cursive" }}
+              >
+                {cuisine}
+              </span>
+            );
+          })}
           {truck.cuisine.length > 3 && (
-            <span className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">
-              +{truck.cuisine.length - 3} more
+            <span className="px-3 py-1 bg-gray-200 text-gray-700 text-xs rounded-full font-bold border-2 border-black">
+              +{truck.cuisine.length - 3} more!
             </span>
           )}
         </div>
 
+        {/* Specialties with fun icons */}
         <div className="space-y-2 mb-4">
-          {truck.specialties.slice(0, 2).map((specialty) => (
-            <div key={specialty} className="text-sm text-gray-700">
-              • {specialty}
+          {truck.specialties.slice(0, 2).map((specialty, index) => (
+            <div key={specialty} className="flex items-center text-sm text-gray-700">
+              <span className="mr-2">{index === 0 ? '🍔' : '🍟'}</span>
+              <span className="font-medium">{specialty}</span>
             </div>
           ))}
         </div>
 
-        <div className="flex justify-between items-center pt-4 border-t border-gray-200">
-          <div className="flex space-x-3">
+        {/* Action area with retro styling */}
+        <div className="flex justify-between items-center pt-4 border-t-4 border-black border-dashed">
+          <div className="flex space-x-2">
             {truck.phone && (
-              <Phone className="h-4 w-4 text-gray-400" />
+              <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+                <Phone className="h-4 w-4 text-white" />
+              </div>
             )}
             {truck.website && (
-              <Globe className="h-4 w-4 text-gray-400" />
+              <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                <Globe className="h-4 w-4 text-white" />
+              </div>
             )}
-            <Clock className="h-4 w-4 text-gray-400" />
+            <div className="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center">
+              <Clock className="h-4 w-4 text-white" />
+            </div>
           </div>
+          
           <Link
             href={`/truck/${truck.id}`}
-            className="bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition-colors"
+            className="diner-button px-6 py-3 text-sm text-white hover:scale-105 transition-transform"
           >
-            View Details
+            <Sparkles className="h-4 w-4 inline mr-1" />
+            CHECK IT OUT!
           </Link>
         </div>
       </div>

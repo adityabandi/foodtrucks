@@ -39,6 +39,12 @@ export class FoodTruckService {
       );
     }
 
+    if (filters.country) {
+      filteredTrucks = filteredTrucks.filter(truck =>
+        truck.country.toLowerCase() === filters.country!.toLowerCase()
+      );
+    }
+
     if (filters.cuisine && filters.cuisine.length > 0) {
       filteredTrucks = filteredTrucks.filter(truck =>
         truck.cuisine.some(c => 
@@ -72,7 +78,8 @@ export class FoodTruckService {
         truck.description.toLowerCase().includes(searchTerm) ||
         truck.cuisine.some(c => c.toLowerCase().includes(searchTerm)) ||
         truck.specialties.some(s => s.toLowerCase().includes(searchTerm)) ||
-        truck.tags.some(t => t.toLowerCase().includes(searchTerm))
+        truck.tags.some(t => t.toLowerCase().includes(searchTerm)) ||
+        truck.country.toLowerCase().includes(searchTerm)
       );
     }
 
@@ -83,13 +90,14 @@ export class FoodTruckService {
     const cityMap = new Map<string, City>();
     
     this.trucks.forEach(truck => {
-      const key = `${truck.city}-${truck.state}`;
+      const key = `${truck.city}-${truck.state}-${truck.country}`;
       if (cityMap.has(key)) {
         cityMap.get(key)!.count++;
       } else {
         cityMap.set(key, {
           name: truck.city,
           state: truck.state,
+          country: truck.country,
           count: 1
         });
       }
@@ -97,6 +105,14 @@ export class FoodTruckService {
 
     return Array.from(cityMap.values())
       .sort((a, b) => b.count - a.count);
+  }
+
+  static getCountries(): string[] {
+    const countrySet = new Set<string>();
+    this.trucks.forEach(truck => {
+      countrySet.add(truck.country);
+    });
+    return Array.from(countrySet).sort();
   }
 
   static getCuisines(): string[] {

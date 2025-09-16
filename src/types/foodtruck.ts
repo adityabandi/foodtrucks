@@ -5,6 +5,7 @@ export interface FoodTruck {
   cuisine: string[];
   city: string;
   state: string;
+  country: string;
   address?: string;
   phone?: string;
   email?: string;
@@ -36,12 +37,14 @@ export interface FoodTruck {
 export interface City {
   name: string;
   state: string;
+  country: string;
   count: number;
 }
 
 export interface FilterOptions {
   city?: string;
   state?: string;
+  country?: string;
   cuisine?: string[];
   priceRange?: string[];
   tags?: string[];
