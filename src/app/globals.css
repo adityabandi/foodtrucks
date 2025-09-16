@@ -1,0 +1,156 @@
+@import "tailwindcss";
+
+:root {
+  --diner-red: #DC143C;
+  --diner-blue: #1E90FF;
+  --diner-yellow: #FFD700;
+  --diner-cream: #FFF8DC;
+  --diner-chrome: #C0C0C0;
+  --diner-mint: #98FB98;
+  --diner-pink: #FFB6C1;
+  --black: #2F2F2F;
+  --white: #FFFFFF;
+}
+
+body {
+  background: var(--diner-cream);
+  color: var(--black);
+  font-family: 'Georgia', serif;
+  background-image: 
+    linear-gradient(45deg, #F5F5DC 25%, transparent 25%), 
+    linear-gradient(-45deg, #F5F5DC 25%, transparent 25%), 
+    linear-gradient(45deg, transparent 75%, #F5F5DC 75%), 
+    linear-gradient(-45deg, transparent 75%, #F5F5DC 75%);
+  background-size: 60px 60px;
+  background-position: 0 0, 0 30px, 30px -30px, -30px 0px;
+}
+
+/* Refined retro text effects */
+.neon-text {
+  text-shadow: 
+    2px 2px 0px var(--diner-red),
+    4px 4px 0px rgba(220, 20, 60, 0.3);
+}
+
+.chrome-text {
+  background: linear-gradient(90deg, #C0C0C0 0%, #FFFFFF 50%, #C0C0C0 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.retro-shadow {
+  text-shadow: 2px 2px 0px var(--diner-red), 4px 4px 0px rgba(30, 144, 255, 0.5);
+}
+
+/* Classic diner buttons */
+.diner-button {
+  background: linear-gradient(180deg, var(--diner-cream) 0%, var(--diner-yellow) 100%);
+  border: 2px solid var(--black);
+  border-radius: 8px;
+  box-shadow: 
+    inset 1px 1px 2px rgba(255,255,255,0.8),
+    inset -1px -1px 2px rgba(0,0,0,0.2),
+    2px 2px 4px rgba(0,0,0,0.3);
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.2s ease;
+  color: var(--black);
+}
+
+.diner-button:hover {
+  background: linear-gradient(180deg, var(--diner-yellow) 0%, var(--diner-cream) 100%);
+  transform: translateY(-1px);
+  box-shadow: 
+    inset 1px 1px 2px rgba(255,255,255,0.9),
+    inset -1px -1px 2px rgba(0,0,0,0.3),
+    3px 3px 6px rgba(0,0,0,0.4);
+}
+
+/* Classic diner booth-style cards */
+.jukebox-card {
+  background: linear-gradient(135deg, var(--white) 0%, var(--diner-cream) 100%);
+  border: 3px solid var(--black);
+  border-radius: 12px;
+  box-shadow: 
+    4px 4px 8px rgba(0,0,0,0.3),
+    inset 1px 1px 2px rgba(255,255,255,0.8);
+  position: relative;
+  overflow: hidden;
+}
+
+.jukebox-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(
+    90deg,
+    var(--diner-red) 0%, 
+    var(--diner-red) 33%, 
+    var(--white) 33%, 
+    var(--white) 66%, 
+    var(--diner-blue) 66%, 
+    var(--diner-blue) 100%
+  );
+}
+
+/* Classic diner black and white checkered floor */
+.checkered-bg {
+  background: 
+    linear-gradient(45deg, var(--black) 25%, transparent 25%), 
+    linear-gradient(-45deg, var(--black) 25%, transparent 25%), 
+    linear-gradient(45deg, transparent 75%, var(--black) 75%), 
+    linear-gradient(-45deg, transparent 75%, var(--black) 75%);
+  background-size: 30px 30px;
+  background-position: 0 0, 0 15px, 15px -15px, -15px 0px;
+  background-color: var(--white);
+}
+
+/* Retro form elements */
+.retro-input {
+  background: var(--white);
+  border: 3px solid var(--black);
+  border-radius: 15px;
+  box-shadow: inset 2px 2px 4px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+.retro-input:focus {
+  outline: none;
+  border-color: var(--diner-red);
+  box-shadow: 
+    inset 2px 2px 4px rgba(0,0,0,0.2),
+    0 0 0 3px rgba(255, 68, 68, 0.3);
+}
+
+/* Classic diner sign */
+.diner-sign {
+  background: linear-gradient(180deg, var(--diner-red) 0%, #B71C1C 100%);
+  border: 3px solid var(--black);
+  border-radius: 8px;
+  box-shadow: 
+    2px 2px 4px rgba(0,0,0,0.4),
+    inset 1px 1px 2px rgba(255,255,255,0.3);
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  font-weight: bold;
+}
+
+.diner-sign::after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  right: 4px;
+  bottom: 4px;
+  border: 1px solid rgba(255,255,255,0.4);
+  border-radius: 4px;
+}
