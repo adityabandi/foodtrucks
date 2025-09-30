@@ -25,7 +25,7 @@ let sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 
 // Add each food truck page
 data.foodTrucks.forEach(truck => {
-    const truckUrl = `${baseUrl}/truck/index.html?id=${truck.id}`;
+    const truckUrl = `${baseUrl}/truck/${truck.id}/`;
     sitemap += `  <!-- ${truck.name} - ${truck.city} -->
   <url>
     <loc>${truckUrl}</loc>

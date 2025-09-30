@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StreetEats - Loading...</title>
+    <script>
+        // Redirect handler for GitHub Pages SPAs
+        // This converts /truck/ft123 to /truck/?id=ft123
+        (function() {
+            var path = window.location.pathname;
+            
+            // Check if this is a truck detail page
+            if (path.startsWith('/foodtrucks/truck/') && path.split('/').length >= 4) {
+                var segments = path.split('/');
+                var truckId = segments[segments.length - 1];
+                
+                // Redirect to truck page with query param
+                if (truckId) {
+                    window.location.href = '/foodtrucks/truck/?id=' + truckId;
+                }
+            } else {
+                // Otherwise go to home
+                window.location.href = '/foodtrucks/';
+            }
+        })();
+    </script>
+</head>
+<body>
+    <div style="display: flex; align-items: center; justify-content: center; height: 100vh; font-family: Arial, sans-serif;">
+        <div style="text-align: center;">
+            <div style="font-size: 60px; margin-bottom: 20px;">🚚</div>
+            <h1>Loading...</h1>
+        </div>
+    </div>
+</body>
+</html>
