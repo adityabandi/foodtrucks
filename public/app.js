@@ -193,97 +193,10 @@ function updateResultsCount(count) {
     document.getElementById('resultsCount').textContent = text;
 }
 
-// Show truck details in modal
-async function showTruckDetails(truckId) {
-    try {
-        const response = await fetch(`${API_BASE}/api/foodtrucks/${truckId}`);
-        const truck = await response.json();
-        
-        const modal = document.getElementById('truckModal');
-        const modalBody = document.getElementById('modalBody');
-        
-        modalBody.innerHTML = `
-            <img src="${truck.image}" alt="${truck.name}" class="modal-header-image"
-                 onerror="this.src='https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=800'">
-            
-            <div class="modal-body">
-                <h2 class="modal-title">${truck.name}</h2>
-                
-                <div class="modal-location">
-                    📍 ${truck.location.address}, ${truck.city}, ${truck.country}
-                </div>
-                
-                <div class="modal-rating-price">
-                    <div class="modal-rating">
-                        ⭐ ${truck.rating} Rating
-                    </div>
-                    <div class="modal-price">
-                        💵 ${truck.priceRange}
-                    </div>
-                </div>
-                
-                <div class="modal-section">
-                    <h3>🍽️ Cuisine Types</h3>
-                    <div class="modal-cuisines">
-                        ${truck.cuisine.map(c => `<span class="cuisine-tag">${c}</span>`).join('')}
-                    </div>
-                </div>
-                
-                <div class="modal-section">
-                    <h3>⭐ Specialties</h3>
-                    <ul class="modal-specialties">
-                        ${truck.specialties.map(s => `<li>${s}</li>`).join('')}
-                    </ul>
-                </div>
-                
-                <div class="modal-section">
-                    <h3>⏰ Operating Hours</h3>
-                    <div class="hours-grid">
-                        ${Object.entries(truck.operatingHours).map(([day, hours]) => `
-                            <div class="hour-item">
-                                <span class="day">${day}</span>
-                                <span class="time">${hours}</span>
-                            </div>
-                        `).join('')}
-                    </div>
-                </div>
-                
-                <div class="modal-section">
-                    <h3>📞 Contact Information</h3>
-                    <div class="contact-info">
-                        ${truck.contact.phone ? `
-                            <div class="contact-item">
-                                📱 <a href="tel:${truck.contact.phone}">${truck.contact.phone}</a>
-                            </div>
-                        ` : ''}
-                        ${truck.contact.website ? `
-                            <div class="contact-item">
-                                🌐 <a href="${truck.contact.website}" target="_blank">${truck.contact.website}</a>
-                            </div>
-                        ` : ''}
-                        ${truck.contact.twitter ? `
-                            <div class="contact-item">
-                                🐦 <a href="https://twitter.com/${truck.contact.twitter.replace('@', '')}" target="_blank">${truck.contact.twitter}</a>
-                            </div>
-                        ` : ''}
-                    </div>
-                </div>
-                
-                ${truck.verified ? `
-                    <div class="modal-section">
-                        <div class="verified-badge" style="justify-content: center; font-size: 16px; padding: 10px;">
-                            ✓ This is a verified food truck
-                        </div>
-                    </div>
-                ` : ''}
-            </div>
-        `;
-        
-        modal.style.display = 'block';
-        document.body.style.overflow = 'hidden';
-    } catch (error) {
-        console.error('Error loading truck details:', error);
-    }
+// Show truck details - navigate to dedicated page
+function showTruckDetails(truckId) {
+    // Navigate to the dedicated page for this food truck
+    window.location.href = `/truck/${truckId}`;
 }
 
 // Close modal

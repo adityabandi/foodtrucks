@@ -5,6 +5,7 @@ const fs = require('fs');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+const BASE_URL = process.env.BASE_URL || 'https://adityabandi.github.io/foodtrucks';
 
 // Middleware
 app.use(cors());
@@ -21,7 +22,7 @@ const loadFoodTrucks = () => {
 app.get('/api/foodtrucks', (req, res) => {
   try {
     const data = loadFoodTrucks();
-    const { city, country, cuisine, minRating, priceRange, search } = req.query;
+    const { city, country, cuisine, minRating, priceRange, search, limit } = req.query;
     
     let trucks = data.foodTrucks;
     
@@ -65,6 +66,11 @@ app.get('/api/foodtrucks', (req, res) => {
         truck.specialties.some(s => s.toLowerCase().includes(searchLower)) ||
         truck.city.toLowerCase().includes(searchLower)
       );
+    }
+    
+    // Apply limit if specified
+    if (limit) {
+      trucks = trucks.slice(0, parseInt(limit));
     }
     
     res.json({
@@ -163,6 +169,60 @@ function getTopCities(trucks) {
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
+
+// Food truck detail pages - serve the truck.html template
+app.get('/truck/:id', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'truck.html'));
+});
+
+// Generate dynamic sitemap
+app.get('/sitemap.xml', (req, res) => {
+  try {
+    const data = loadFoodTrucks();
+    const sitemap = generateSitemap(data.foodTrucks, BASE_URL);
+    res.header('Content-Type', 'application/xml');
+    res.send(sitemap);
+  } catch (error) {
+    res.status(500).send('Error generating sitemap');
+  }
+});
+
+// Generate robots.txt
+app.get('/robots.txt', (req, res) => {
+  res.type('text/plain');
+  res.send(`User-agent: *
+Allow: /
+Sitemap: ${BASE_URL}/sitemap.xml
+`);
+});
+
+function generateSitemap(trucks, baseUrl) {
+  const now = new Date().toISOString();
+  
+  let xml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>${baseUrl}/</loc>
+    <lastmod>${now}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+`;
+  
+  // Add each food truck page
+  trucks.forEach(truck => {
+    xml += `  <url>
+    <loc>${baseUrl}/truck/${truck.id}</loc>
+    <lastmod>${now}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+`;
+  });
+  
+  xml += `</urlset>`;
+  return xml;
+}
 
 app.listen(PORT, () => {
   console.log(`🚚 StreetEats server running on http://localhost:${PORT}`);

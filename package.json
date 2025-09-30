@@ -11,7 +11,8 @@
     "fetch-yelp": "node fetch-yelp-data.js",
     "fetch-international": "node fetch-international-trucks.js",
     "fetch-osm": "node fetch-osm-trucks.js",
-    "generate-sitemap": "node generate-sitemap.js"
+    "generate-sitemap": "node generate-sitemap.js",
+    "build": "node build-github-pages.js"
   },
   "keywords": [
     "food-trucks",

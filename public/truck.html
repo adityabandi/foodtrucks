@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Food Truck | StreetEats</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" id="page-description" content="Discover amazing food trucks on StreetEats">
+    <meta name="keywords" id="page-keywords" content="food truck, street food, mobile food">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" id="page-canonical" href="">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="restaurant">
+    <meta property="og:url" id="og-url" content="">
+    <meta property="og:title" id="og-title" content="">
+    <meta property="og:description" id="og-description" content="">
+    <meta property="og:image" id="og-image" content="">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" id="twitter-url" content="">
+    <meta property="twitter:title" id="twitter-title" content="">
+    <meta property="twitter:description" id="twitter-description" content="">
+    <meta property="twitter:image" id="twitter-image" content="">
+    
+    <link rel="stylesheet" href="/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Righteous&display=swap" rel="stylesheet">
+    
+    <!-- Structured Data (JSON-LD) for SEO -->
+    <script type="application/ld+json" id="structured-data">
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="/" style="text-decoration: none; color: inherit; display: flex; align-items: center;">
+                    <span class="logo-icon">🚚</span>
+                    <span class="logo-text">StreetEats</span>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/#explore">Explore</a>
+                <a href="/#about">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Loading State -->
+    <div id="loading" class="loading-state">
+        <div class="loading-spinner">🚚</div>
+        <p>Loading delicious details...</p>
+    </div>
+
+    <!-- Error State -->
+    <div id="error" class="error-state" style="display: none;">
+        <h2>🍔 Oops! Food Truck Not Found</h2>
+        <p>We couldn't find this food truck. It might have driven away!</p>
+        <a href="/" class="button">🏠 Back to Home</a>
+    </div>
+
+    <!-- Food Truck Detail Page -->
+    <main id="truck-detail" style="display: none;">
+        <!-- Hero Section with Image -->
+        <section class="truck-hero">
+            <img id="truck-image" src="" alt="" class="truck-hero-image">
+            <div class="truck-hero-overlay">
+                <div class="container">
+                    <h1 id="truck-name" class="truck-hero-title"></h1>
+                    <div class="truck-hero-meta">
+                        <span id="truck-location" class="hero-meta-item"></span>
+                        <span id="truck-rating" class="hero-meta-item"></span>
+                        <span id="truck-price" class="hero-meta-item"></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <section class="truck-content-section">
+            <div class="container">
+                <div class="truck-content-grid">
+                    <!-- Main Info -->
+                    <div class="truck-main-info">
+                        <!-- Quick Facts -->
+                        <div class="info-card">
+                            <h2>📍 Location & Hours</h2>
+                            <div class="location-details">
+                                <p class="address" id="truck-address"></p>
+                                <div id="truck-hours" class="hours-list"></div>
+                            </div>
+                        </div>
+
+                        <!-- Cuisine & Specialties -->
+                        <div class="info-card">
+                            <h2>🍽️ Cuisine & Specialties</h2>
+                            <div id="truck-cuisines" class="cuisine-tags-large"></div>
+                            <h3>Signature Dishes</h3>
+                            <ul id="truck-specialties" class="specialties-list"></ul>
+                        </div>
+
+                        <!-- About this Food Truck -->
+                        <div class="info-card">
+                            <h2>📖 About</h2>
+                            <div id="truck-about" class="about-text"></div>
+                        </div>
+
+                        <!-- Reviews Summary -->
+                        <div class="info-card">
+                            <h2>⭐ Reviews</h2>
+                            <div id="truck-reviews" class="reviews-summary"></div>
+                        </div>
+                    </div>
+
+                    <!-- Sidebar -->
+                    <div class="truck-sidebar">
+                        <!-- Contact Card -->
+                        <div class="sidebar-card">
+                            <h3>📞 Contact</h3>
+                            <div id="truck-contact" class="contact-links"></div>
+                        </div>
+
+                        <!-- Quick Info -->
+                        <div class="sidebar-card">
+                            <h3>ℹ️ Quick Info</h3>
+                            <div id="truck-quick-info" class="quick-info-list"></div>
+                        </div>
+
+                        <!-- Related Trucks -->
+                        <div class="sidebar-card">
+                            <h3>🔍 Similar Trucks</h3>
+                            <div id="related-trucks" class="related-trucks-list"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- City Guide Section -->
+        <section class="city-guide-section">
+            <div class="container">
+                <h2>More Food Trucks in <span id="city-name"></span></h2>
+                <div id="city-trucks" class="trucks-grid"></div>
+                <a href="/#explore" class="button">View All Trucks</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 StreetEats. Data compiled from public sources and verified vendors.</p>
+            <p>🚚 Celebrating street food culture worldwide</p>
+        </div>
+    </footer>
+
+    <script src="/truck.js"></script>
+</body>
+</html>
