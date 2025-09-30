@@ -1,0 +1,31 @@
+{
+  "name": "streeteats",
+  "version": "1.0.0",
+  "description": "A comprehensive global food truck database featuring authentic street food from major cities worldwide",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "validate": "node validate-data.js",
+    "test": "npm run validate",
+    "fetch-yelp": "node fetch-yelp-data.js",
+    "fetch-international": "node fetch-international-trucks.js",
+    "fetch-osm": "node fetch-osm-trucks.js"
+  },
+  "keywords": [
+    "food-trucks",
+    "street-food",
+    "global-cuisine",
+    "food-database",
+    "restaurant-finder"
+  ],
+  "author": "StreetEats Team",
+  "license": "MIT",
+  "dependencies": {
+    "@googlemaps/google-maps-services-js": "^3.4.2",
+    "axios": "^1.12.2",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0"
+  }
+}

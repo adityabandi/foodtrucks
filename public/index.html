@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StreetEats - Classic American Diner Food Trucks</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Righteous&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Hero Section -->
+    <header class="hero">
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <span class="logo-icon">🚚</span>
+                    <span class="logo-text">StreetEats</span>
+                </div>
+                <div class="nav-links">
+                    <a href="#explore">Explore</a>
+                    <a href="#about">About</a>
+                    <a href="#stats">Statistics</a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="hero-content">
+            <h1 class="hero-title">Classic Street Eats!</h1>
+            <p class="hero-subtitle">Real Food Trucks • Real Flavors • Real Good!</p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number" id="totalTrucks">30+</span>
+                    <span class="stat-label">Food Trucks</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="totalCities">30+</span>
+                    <span class="stat-label">Cities</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="totalCountries">23+</span>
+                    <span class="stat-label">Countries</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Search and Filter Section -->
+    <section id="explore" class="search-section">
+        <div class="container">
+            <div class="search-header">
+                <h2>Find Your Favorite Truck!</h2>
+                <p>Search by name, cuisine, or location</p>
+            </div>
+            
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Search food trucks..." class="search-input">
+                <button class="search-button" onclick="applyFilters()">🔍 Search</button>
+            </div>
+            
+            <div class="filters">
+                <div class="filter-group">
+                    <label>Cuisine Type</label>
+                    <select id="cuisineFilter" onchange="applyFilters()">
+                        <option value="">All Cuisines</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label>City</label>
+                    <select id="cityFilter" onchange="applyFilters()">
+                        <option value="">All Cities</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label>Price Range</label>
+                    <select id="priceFilter" onchange="applyFilters()">
+                        <option value="">All Prices</option>
+                        <option value="$">$ - Budget</option>
+                        <option value="$$">$$ - Moderate</option>
+                        <option value="$$$">$$$ - Premium</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label>Min Rating</label>
+                    <select id="ratingFilter" onchange="applyFilters()">
+                        <option value="">Any Rating</option>
+                        <option value="4.5">4.5+ ⭐</option>
+                        <option value="4.7">4.7+ ⭐</option>
+                        <option value="4.9">4.9+ ⭐</option>
+                    </select>
+                </div>
+                
+                <button class="clear-button" onclick="clearFilters()">Clear Filters</button>
+            </div>
+            
+            <div class="results-info">
+                <span id="resultsCount">Loading food trucks...</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Food Trucks Grid -->
+    <section class="trucks-section">
+        <div class="container">
+            <div id="trucksGrid" class="trucks-grid">
+                <!-- Food trucks will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section id="stats" class="stats-section">
+        <div class="container">
+            <h2 class="section-title">Platform Statistics</h2>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">🌍</div>
+                    <h3>Global Coverage</h3>
+                    <p>Food trucks from <strong id="statCountries">23</strong> countries across <strong id="statCities">30</strong> major cities</p>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">⭐</div>
+                    <h3>Quality Assured</h3>
+                    <p>Average rating of <strong id="avgRating">4.7</strong> stars from verified reviews</p>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">🍜</div>
+                    <h3>Diverse Cuisines</h3>
+                    <p><strong id="cuisineCount">25+</strong> different cuisine types to explore</p>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">✅</div>
+                    <h3>Verified Vendors</h3>
+                    <p>All food trucks are verified and regularly updated</p>
+                </div>
+            </div>
+            
+            <div class="top-cuisines">
+                <h3>Most Popular Cuisines</h3>
+                <div id="topCuisines" class="cuisine-list">
+                    <!-- Will be populated dynamically -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title">About StreetEats</h2>
+            <div class="about-content">
+                <p>StreetEats is a comprehensive database of the world's best food trucks, featuring authentic street food from major cities around the globe. Our mission is to help food lovers discover amazing mobile eateries and support local food truck businesses.</p>
+                
+                <div class="features">
+                    <div class="feature">
+                        <div class="feature-icon">🔍</div>
+                        <h4>Easy Discovery</h4>
+                        <p>Search and filter by cuisine, location, price, and ratings</p>
+                    </div>
+                    
+                    <div class="feature">
+                        <div class="feature-icon">📍</div>
+                        <h4>Real Locations</h4>
+                        <p>Find food trucks with accurate location information</p>
+                    </div>
+                    
+                    <div class="feature">
+                        <div class="feature-icon">⏰</div>
+                        <h4>Operating Hours</h4>
+                        <p>Check when your favorite trucks are open</p>
+                    </div>
+                    
+                    <div class="feature">
+                        <div class="feature-icon">📞</div>
+                        <h4>Contact Info</h4>
+                        <p>Get phone numbers and websites to connect directly</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal for Food Truck Details -->
+    <div id="truckModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="modalBody">
+                <!-- Modal content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 StreetEats. Data compiled from public sources and verified vendors.</p>
+            <p>🚚 Celebrating street food culture worldwide</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

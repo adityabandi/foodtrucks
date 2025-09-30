@@ -1,0 +1,517 @@
+[dotenv@17.2.3] injecting env (2) from .env -- tip: ⚙️  override existing env vars with { override: true }
+🚚 Fetching MASSIVE food truck database from Yelp API...
+
+⏳ This will take a few minutes to fetch thousands of trucks...
+
+
+[1/50] 📍 Searching New York, NY...
+   ✅ Found 200 food trucks
+      - Corona Eats BBNY (5⭐, 6 reviews)
+      - Nino's Breakfast Shack (5⭐, 17 reviews)
+      - The Blended Bistro (5⭐, 8 reviews)
+      - Halal House Food Cart (5⭐, 5 reviews)
+      - Taqueria Gardenias (5⭐, 5 reviews)
+      ... and 195 more
+   📊 Total collected so far: 200 trucks
+
+[2/50] 📍 Searching Los Angeles, CA...
+   ✅ Found 200 food trucks
+      - Chefs on fire (5⭐, 6 reviews)
+      - El Limoncito Food Truck (5⭐, 14 reviews)
+      - Frank's Taco Bar (5⭐, 11 reviews)
+      - Rasta Rita Margarita and Beverage Truck (5⭐, 8 reviews)
+      - El Chamecla Mariscos Truck (5⭐, 12 reviews)
+      ... and 195 more
+   📊 Total collected so far: 400 trucks
+
+[3/50] 📍 Searching Chicago, IL...
+   ✅ Found 200 food trucks
+      - The Gilty Pig (5⭐, 5 reviews)
+      - The Food Truck Hub & Event Experiences (5⭐, 13 reviews)
+      - Flash Taco (5⭐, 5 reviews)
+      - Las kecas del boulevard (5⭐, 7 reviews)
+      - De Luna Taco Grill (5⭐, 10 reviews)
+      ... and 195 more
+   📊 Total collected so far: 600 trucks
+
+[4/50] 📍 Searching Houston, TX...
+   ✅ Found 200 food trucks
+      - Trap Sauce Mix (5⭐, 6 reviews)
+      - Lartia's Cafe (5⭐, 13 reviews)
+      - Pupuseria Kimberly (5⭐, 6 reviews)
+      - The Crepe & Waffle Shack (5⭐, 6 reviews)
+      - Sandwich on the Way (5⭐, 7 reviews)
+      ... and 195 more
+   📊 Total collected so far: 800 trucks
+
+[5/50] 📍 Searching Phoenix, AZ...
+   ✅ Found 200 food trucks
+      - Meat the Cheese (5⭐, 9 reviews)
+      - Oogies Dogs (5⭐, 5 reviews)
+      - Hot dogs y tacos Los de Sonora (5⭐, 5 reviews)
+      - Great American Kabob (5⭐, 5 reviews)
+      - The Traveling Cup - Coffee Trucks (5⭐, 10 reviews)
+      ... and 195 more
+   📊 Total collected so far: 1000 trucks
+
+[6/50] 📍 Searching Philadelphia, PA...
+   ✅ Found 200 food trucks
+      - Frozen Island (5⭐, 5 reviews)
+      - El Manzano (5⭐, 6 reviews)
+      - Daddys Kitchen (5⭐, 5 reviews)
+      - La Petite Tasse (5⭐, 8 reviews)
+      - Tuckedito Taquitos (5⭐, 5 reviews)
+      ... and 195 more
+   📊 Total collected so far: 1200 trucks
+
+[7/50] 📍 Searching San Antonio, TX...
+   ✅ Found 200 food trucks
+      - El Chivito (5⭐, 5 reviews)
+      - Satisfried (5⭐, 8 reviews)
+      - Tasty Balls and More (5⭐, 11 reviews)
+      - El Jarocho Veracruzano (5⭐, 6 reviews)
+      - Funnel Cake Fanatics (5⭐, 11 reviews)
+      ... and 195 more
+   📊 Total collected so far: 1400 trucks
+
+[8/50] 📍 Searching San Diego, CA...
+   ✅ Found 200 food trucks
+      - Jamming’s Mobile Grill (5⭐, 7 reviews)
+      - Rodriguez Paletas (5⭐, 5 reviews)
+      - Pour Boy Coffee Company (5⭐, 7 reviews)
+      - Barbaric BBQ (5⭐, 10 reviews)
+      - Tacos El Richi (5⭐, 27 reviews)
+      ... and 195 more
+   📊 Total collected so far: 1600 trucks
+
+[9/50] 📍 Searching Dallas, TX...
+   ✅ Found 200 food trucks
+      - Martin’s Italian Ice (5⭐, 9 reviews)
+      - DFW Ice Cream Truck (5⭐, 8 reviews)
+      - Tacos El Pueblo (5⭐, 6 reviews)
+      - Taste of Jalisco (5⭐, 5 reviews)
+      - Castle Sno'zone (5⭐, 7 reviews)
+      ... and 195 more
+   📊 Total collected so far: 1800 trucks
+
+[10/50] 📍 Searching San Jose, CA...
+   ✅ Found 200 food trucks
+      - Shako's Tacos (5⭐, 13 reviews)
+      - Aunties Lumpias (5⭐, 9 reviews)
+      - Tap Truck Santa Cruz & Santa Clara (5⭐, 7 reviews)
+      - Monarcas Taqueria (5⭐, 5 reviews)
+      - Meat Factory Food Truck (5⭐, 9 reviews)
+      ... and 195 more
+   📊 Total collected so far: 2000 trucks
+
+[11/50] 📍 Searching Austin, TX...
+   ✅ Found 200 food trucks
+      - Topp Dawg (5⭐, 8 reviews)
+      - Guatemalteca (5⭐, 5 reviews)
+      - Tamales y Antojitos Veracruz (5⭐, 7 reviews)
+      - Taqueria Berenice (5⭐, 5 reviews)
+      - Mi Lupita Taqueria (5⭐, 6 reviews)
+      ... and 195 more
+   📊 Total collected so far: 2200 trucks
+
+[12/50] 📍 Searching Jacksonville, FL...
+   ✅ Found 200 food trucks
+      - Bite Me Hotdogs and More (5⭐, 8 reviews)
+      - J & G's Burgers & Pepitos (5⭐, 5 reviews)
+      - Chef EZ & the Mariposa (5⭐, 6 reviews)
+      - Crown Majestic Kitchen (5⭐, 5 reviews)
+      - Nature's Drip (5⭐, 9 reviews)
+      ... and 195 more
+   📊 Total collected so far: 2400 trucks
+
+[13/50] 📍 Searching Fort Worth, TX...
+   ✅ Found 200 food trucks
+      - The Catfish Hut (5⭐, 6 reviews)
+      - Los Tacos (5⭐, 5 reviews)
+      - DFW Ice Cream Truck (5⭐, 8 reviews)
+      - Downtown Shawarma (5⭐, 14 reviews)
+      - Tacos El Pueblo (5⭐, 6 reviews)
+      ... and 195 more
+   📊 Total collected so far: 2600 trucks
+
+[14/50] 📍 Searching Columbus, OH...
+   ✅ Found 200 food trucks
+      - Chilljoy Frozen Treatery (5⭐, 17 reviews)
+      - The Galaxy Coffee (5⭐, 16 reviews)
+      - Comida El Catrin (5⭐, 9 reviews)
+      - JD’s Secret Stash (5⭐, 10 reviews)
+      - Sweet Cheese (5⭐, 16 reviews)
+      ... and 195 more
+   📊 Total collected so far: 2800 trucks
+
+[15/50] 📍 Searching Charlotte, NC...
+   ✅ Found 200 food trucks
+      - Ice cream - R - Us (5⭐, 7 reviews)
+      - Smokin Joe's Mobile Diner (5⭐, 6 reviews)
+      - For Crying Out Loud (5⭐, 8 reviews)
+      - Big Butt BBQ (5⭐, 6 reviews)
+      - Antojitos El Valle (5⭐, 5 reviews)
+      ... and 195 more
+   📊 Total collected so far: 3000 trucks
+
+[16/50] 📍 Searching San Francisco, CA...
+   ✅ Found 200 food trucks
+      - Hero Cafe (5⭐, 8 reviews)
+      - Cruisin Creams (5⭐, 24 reviews)
+      - Napa Valley Lobster (5⭐, 21 reviews)
+      - Bay Area Taco Catering (5⭐, 17 reviews)
+      - The Bartender Truck (5⭐, 13 reviews)
+      ... and 195 more
+   📊 Total collected so far: 3200 trucks
+
+[17/50] 📍 Searching Indianapolis, IN...
+   ✅ Found 200 food trucks
+      - Ardys Concession (5⭐, 5 reviews)
+      - Tacos El Iturbidense (5⭐, 5 reviews)
+      - Paul's Kitchen (5⭐, 6 reviews)
+      - Pearl Coffee Company (5⭐, 6 reviews)
+      - Dashboard Food Truck (5⭐, 6 reviews)
+      ... and 195 more
+   📊 Total collected so far: 3400 trucks
+
+[18/50] 📍 Searching Seattle, WA...
+   ✅ Found 200 food trucks
+      - Food Truck Friday (5⭐, 7 reviews)
+      - El Saborcito (5⭐, 9 reviews)
+      - Who's Eating Gilbert's Greats (5⭐, 9 reviews)
+      - Taqueria El Cerrito (5⭐, 6 reviews)
+      - El Camión (5⭐, 6 reviews)
+      ... and 195 more
+   📊 Total collected so far: 3600 trucks
+
+[19/50] 📍 Searching Denver, CO...
+   ✅ Found 200 food trucks
+      - Amanecer Mexican Food Truck (5⭐, 12 reviews)
+      - Clamato Time (5⭐, 6 reviews)
+      - Poutine Tang (5⭐, 6 reviews)
+      - Babooza's (5⭐, 9 reviews)
+      - Fanwich Food Truck (5⭐, 10 reviews)
+      ... and 195 more
+   📊 Total collected so far: 3800 trucks
+
+[20/50] 📍 Searching Washington, DC...
+   ✅ Found 200 food trucks
+      - The Freshmobile (5⭐, 7 reviews)
+      - Burger Bomb (5⭐, 6 reviews)
+      - Smoke's BBQ (5⭐, 19 reviews)
+      - Murazzi Pizza (5⭐, 11 reviews)
+      - Mama Rosa's Ice (5⭐, 6 reviews)
+      ... and 195 more
+   📊 Total collected so far: 4000 trucks
+
+[21/50] 📍 Searching Boston, MA...
+   ✅ Found 183 food trucks
+      - Black’s Creek BBQ (5⭐, 6 reviews)
+      - Kush By Saba (5⭐, 6 reviews)
+      - Polish Prince Pierogi (4.9⭐, 15 reviews)
+      - Souped Up Food (4.9⭐, 9 reviews)
+      - The Coffee Trike (4.9⭐, 42 reviews)
+      ... and 178 more
+   📊 Total collected so far: 4183 trucks
+
+[22/50] 📍 Searching El Paso, TX...
+   ✅ Found 200 food trucks
+      - El Botanero Mariscos (5⭐, 12 reviews)
+      - 4tacos 4tacos 4tacos (5⭐, 35 reviews)
+      - Star Burgers & Fries (4.9⭐, 17 reviews)
+      - Poke Poki Bowl (4.9⭐, 16 reviews)
+      - Neep Collective (4.9⭐, 7 reviews)
+      ... and 195 more
+   📊 Total collected so far: 4383 trucks
+
+[23/50] 📍 Searching Nashville, TN...
+   ✅ Found 200 food trucks
+      - Middle Tennessee Catering (5⭐, 5 reviews)
+      - Big Mike's Little Donuts (5⭐, 8 reviews)
+      - Nofuss Taco (5⭐, 6 reviews)
+      - DEM BONeZ Bar-B-Que (5⭐, 6 reviews)
+      - Zilla's Pit BBQ (5⭐, 11 reviews)
+      ... and 195 more
+   📊 Total collected so far: 4583 trucks
+
+[24/50] 📍 Searching Detroit, MI...
+   ✅ Found 200 food trucks
+      - Tammy's Patties (5⭐, 6 reviews)
+      - 313 Curbside Eatery (5⭐, 5 reviews)
+      - Esto's Garage (5⭐, 5 reviews)
+      - La Plaza Detroit (5⭐, 8 reviews)
+      - Coronados Southwest Tacos (5⭐, 10 reviews)
+      ... and 195 more
+   📊 Total collected so far: 4783 trucks
+
+[25/50] 📍 Searching Oklahoma City, OK...
+   ✅ Found 200 food trucks
+      - Blessed & Highly Caffeinated (5⭐, 7 reviews)
+      - Taqueria El Mezcal (5⭐, 10 reviews)
+      - Tacos Emmanuel (5⭐, 7 reviews)
+      - El Tapatio #2 (5⭐, 9 reviews)
+      - Just Desserts OKC (5⭐, 7 reviews)
+      ... and 195 more
+   📊 Total collected so far: 4983 trucks
+
+[26/50] 📍 Searching Portland, OR...
+   ✅ Found 200 food trucks
+      - Bubbles & Treats (5⭐, 8 reviews)
+      - Milwaukie Cafe Cart (5⭐, 5 reviews)
+      - Taqueria Santo Tomas (5⭐, 8 reviews)
+      - Ramblin' Rose (5⭐, 6 reviews)
+      - No Clucks (5⭐, 11 reviews)
+      ... and 195 more
+   📊 Total collected so far: 5183 trucks
+
+[27/50] 📍 Searching Las Vegas, NV...
+   ✅ Found 200 food trucks
+      - Crock & Roll (5⭐, 8 reviews)
+      - La Mamita (5⭐, 7 reviews)
+      - Boxed Butcher (5⭐, 5 reviews)
+      - Melter Skelter (5⭐, 15 reviews)
+      - Empanadas (5⭐, 5 reviews)
+      ... and 195 more
+   📊 Total collected so far: 5383 trucks
+
+[28/50] 📍 Searching Memphis, TN...
+   ✅ Found 200 food trucks
+      - Situational Cravings (5⭐, 5 reviews)
+      - David's Catering (5⭐, 5 reviews)
+      - Taqueria Chelita (5⭐, 9 reviews)
+      - Mama Pug's Sensational Sweets (5⭐, 11 reviews)
+      - Memphis Crawfish #2 (5⭐, 5 reviews)
+      ... and 195 more
+   📊 Total collected so far: 5583 trucks
+
+[29/50] 📍 Searching Louisville, KY...
+   ✅ Found 200 food trucks
+      - Cattleman’s Q (5⭐, 8 reviews)
+      - Cafe Lomez (5⭐, 5 reviews)
+      - Shawarma King (5⭐, 11 reviews)
+      - Crowler Catering & Small Batch Events (5⭐, 16 reviews)
+      - Bamba Eggroll Company (5⭐, 11 reviews)
+      ... and 195 more
+   📊 Total collected so far: 5783 trucks
+
+[30/50] 📍 Searching Baltimore, MD...
+   ✅ Found 200 food trucks
+      - Murazzi Pizza (5⭐, 11 reviews)
+      - Jordanian Halal (5⭐, 6 reviews)
+      - LOTE 787 (5⭐, 6 reviews)
+      - Troy's One Lucky Dog (5⭐, 36 reviews)
+      - El Sopon Mexican and Salvadoran Food Truck (4.9⭐, 18 reviews)
+      ... and 195 more
+   📊 Total collected so far: 5983 trucks
+
+[31/50] 📍 Searching Milwaukee, WI...
+   ✅ Found 200 food trucks
+      - Blue Cow Creperie (5⭐, 5 reviews)
+      - Frida's Cocina (5⭐, 8 reviews)
+      - Munch Mobile (5⭐, 5 reviews)
+      - Phoenix Mobile Grill (5⭐, 6 reviews)
+      - Concoctions (5⭐, 5 reviews)
+      ... and 195 more
+   📊 Total collected so far: 6183 trucks
+
+[32/50] 📍 Searching Albuquerque, NM...
+   ✅ Found 200 food trucks
+      - Parker’s Pizza (5⭐, 5 reviews)
+      - Barrigas Abq (5⭐, 6 reviews)
+      - Los Alebrijes (5⭐, 6 reviews)
+      - Papa Cano’s (5⭐, 5 reviews)
+      - El Bukanax (5⭐, 16 reviews)
+      ... and 195 more
+   📊 Total collected so far: 6383 trucks
+
+[33/50] 📍 Searching Tucson, AZ...
+   ✅ Found 200 food trucks
+      - Donut Blitz (5⭐, 6 reviews)
+      - El Amigo (5⭐, 8 reviews)
+      - Sushi Hana (5⭐, 6 reviews)
+      - The Mobile Bistro (5⭐, 5 reviews)
+      - Ukies (5⭐, 10 reviews)
+      ... and 195 more
+   📊 Total collected so far: 6583 trucks
+
+[34/50] 📍 Searching Fresno, CA...
+   ✅ Found 200 food trucks
+      - The Dog Shack (5⭐, 7 reviews)
+      - Tacos Las Becerritas (5⭐, 10 reviews)
+      - The Ave Burger (5⭐, 5 reviews)
+      - Sammy’s Tacos (5⭐, 5 reviews)
+      - Basil Bloom Pizza (5⭐, 5 reviews)
+      ... and 195 more
+   📊 Total collected so far: 6783 trucks
+
+[35/50] 📍 Searching Mesa, AZ...
+   ✅ Found 200 food trucks
+      - Meat the Cheese (5⭐, 9 reviews)
+      - The Traveling Cup - Coffee Trucks (5⭐, 10 reviews)
+      - Mariscos Las Islitas Food Truck (5⭐, 8 reviews)
+      - Larry's Picnic (5⭐, 5 reviews)
+      - Last Call Mobile Bar (5⭐, 5 reviews)
+      ... and 195 more
+   📊 Total collected so far: 6983 trucks
+
+[36/50] 📍 Searching Sacramento, CA...
+   ✅ Found 200 food trucks
+      - Salud! Mobile Bar (5⭐, 7 reviews)
+      - Smoothie Patrol (5⭐, 5 reviews)
+      - Dos Tacos Y Ma (5⭐, 6 reviews)
+      - Chilepino Taqueria (5⭐, 9 reviews)
+      - Takizas f&f (5⭐, 7 reviews)
+      ... and 195 more
+   📊 Total collected so far: 7183 trucks
+
+[37/50] 📍 Searching Atlanta, GA...
+   ✅ Found 200 food trucks
+      - AnA Shawarma (5⭐, 7 reviews)
+      - Bell Room Catering (5⭐, 9 reviews)
+      - Ira Lane Coffee (5⭐, 16 reviews)
+      - The World Is Your Oyster (5⭐, 6 reviews)
+      - Che Butter Jonez (5⭐, 30 reviews)
+      ... and 195 more
+   📊 Total collected so far: 7383 trucks
+
+[38/50] 📍 Searching Kansas City, MO...
+   ✅ Found 200 food trucks
+      - The Sugar Skull Grill (5⭐, 5 reviews)
+      - Pitchside Coffee (5⭐, 11 reviews)
+      - Tacos El Sombrero (5⭐, 9 reviews)
+      - KC Mobile Munchies (5⭐, 5 reviews)
+      - Taqueria Ibarra (4.9⭐, 19 reviews)
+      ... and 195 more
+   📊 Total collected so far: 7583 trucks
+
+[39/50] 📍 Searching Colorado Springs, CO...
+   ✅ Found 200 food trucks
+      - Roccos Mobile Food (5⭐, 6 reviews)
+      - Black Forest Chew-Chew (5⭐, 6 reviews)
+      - BC’s Barbecue (5⭐, 8 reviews)
+      - Bale Bale Bistro (5⭐, 5 reviews)
+      - A Lil’ Bit Of Home (5⭐, 6 reviews)
+      ... and 195 more
+   📊 Total collected so far: 7783 trucks
+
+[40/50] 📍 Searching Raleigh, NC...
+   ✅ Found 200 food trucks
+      - Grandotes Taco Grill (5⭐, 17 reviews)
+      - Willow House Coffee & Community (5⭐, 11 reviews)
+      - Doo Wop Desserts (5⭐, 9 reviews)
+      - Not just a Fry Guy (5⭐, 5 reviews)
+      - Rescue Dogs & Catering (5⭐, 5 reviews)
+      ... and 195 more
+   📊 Total collected so far: 7983 trucks
+
+[41/50] 📍 Searching Miami, FL...
+   ✅ Found 200 food trucks
+      - Grill on Wheelz (5⭐, 7 reviews)
+      - Empaisanas (5⭐, 5 reviews)
+      - Tapicante (5⭐, 5 reviews)
+      - Italian Vice (5⭐, 7 reviews)
+      - Taco Express (5⭐, 6 reviews)
+      ... and 195 more
+   📊 Total collected so far: 8183 trucks
+
+[42/50] 📍 Searching Long Beach, CA...
+   ✅ Found 200 food trucks
+      - The Mobile Barkery (5⭐, 8 reviews)
+      - Frank's Taco Bar (5⭐, 11 reviews)
+      - Rasta Rita Margarita and Beverage Truck (5⭐, 8 reviews)
+      - Mariscos El Aguachileon (5⭐, 6 reviews)
+      - Poke LA (5⭐, 6 reviews)
+      ... and 195 more
+   📊 Total collected so far: 8383 trucks
+
+[43/50] 📍 Searching Virginia Beach, VA...
+   ✅ Found 200 food trucks
+      - Glazed And Infuzed (5⭐, 7 reviews)
+      - Aloha VB (5⭐, 6 reviews)
+      - Little Piggy's Wurst Nightmare (5⭐, 5 reviews)
+      - Sundayz With Shev (5⭐, 5 reviews)
+      - Big Belly Food Truck (5⭐, 5 reviews)
+      ... and 195 more
+   📊 Total collected so far: 8583 trucks
+
+[44/50] 📍 Searching Oakland, CA...
+   ✅ Found 200 food trucks
+      - El Charrascas (5⭐, 5 reviews)
+      - The Sisters Taco Truck (5⭐, 5 reviews)
+      - Hero Cafe (5⭐, 8 reviews)
+      - Cruisin Creams (5⭐, 24 reviews)
+      - Alice’s Catering (5⭐, 6 reviews)
+      ... and 195 more
+   📊 Total collected so far: 8783 trucks
+
+[45/50] 📍 Searching Minneapolis, MN...
+   ✅ Found 200 food trucks
+      - Tacos Mi Tierra (5⭐, 8 reviews)
+      - El Rancherito (5⭐, 5 reviews)
+      - La Maria Taqueria Food Truck (5⭐, 17 reviews)
+      - The Salsa Spot (5⭐, 8 reviews)
+      - Taqueria Victor Hugo (5⭐, 5 reviews)
+      ... and 195 more
+   📊 Total collected so far: 8983 trucks
+
+[46/50] 📍 Searching Tulsa, OK...
+   ✅ Found 200 food trucks
+      - Velios Tacos y Gorditas (5⭐, 6 reviews)
+      - Taqueria Corona (5⭐, 5 reviews)
+      - Los Corrales Mexican Tacos (5⭐, 5 reviews)
+      - Killer Wail Barbecue (5⭐, 12 reviews)
+      - Soul’d Out Cuisine (5⭐, 5 reviews)
+      ... and 195 more
+   📊 Total collected so far: 9183 trucks
+
+[47/50] 📍 Searching Tampa, FL...
+   ✅ Found 200 food trucks
+      - Juju Taiyaki (5⭐, 6 reviews)
+      - The Creamy Wheels (5⭐, 8 reviews)
+      - Los Tacos Mariachis (5⭐, 5 reviews)
+      - Don Juan’s Mexican Grill (5⭐, 6 reviews)
+      - Bamboo Warriors BBQ (5⭐, 6 reviews)
+      ... and 195 more
+   📊 Total collected so far: 9383 trucks
+
+[48/50] 📍 Searching Arlington, TX...
+   ✅ Found 200 food trucks
+      - Los Tacos (5⭐, 5 reviews)
+      - DFW Ice Cream Truck (5⭐, 8 reviews)
+      - Tacos El Pueblo (5⭐, 6 reviews)
+      - Ghost Food Park (5⭐, 7 reviews)
+      - Pokey O's- Tarrant (5⭐, 10 reviews)
+      ... and 195 more
+   📊 Total collected so far: 9583 trucks
+
+[49/50] 📍 Searching New Orleans, LA...
+   ✅ Found 147 food trucks
+      - Big O’s Original Pops (5⭐, 12 reviews)
+      - Original Thought (4.8⭐, 32 reviews)
+      - Taqueria El Poblano (4.8⭐, 35 reviews)
+      - Bonafried (4.8⭐, 43 reviews)
+      - Rolling Cones (5⭐, 4 reviews)
+      ... and 142 more
+   📊 Total collected so far: 9730 trucks
+
+[50/50] 📍 Searching Wichita, KS...
+   ✅ Found 82 food trucks
+      - Nora's Kitchen (5⭐, 5 reviews)
+      - Tacos Uruapan (4.9⭐, 9 reviews)
+      - Funky Monkey Munchies (4.8⭐, 11 reviews)
+      - Rockin Rico's Gourmet Sno Balls (4.8⭐, 5 reviews)
+      - The Flying Stove (4.8⭐, 40 reviews)
+      ... and 77 more
+   📊 Total collected so far: 9812 trucks
+
+
+📊 Total food trucks fetched: 9812
+🌍 Cities with trucks: 50
+⭐ Average rating: 4.31
+
+💾 Old database backed up to foodtrucks.backup.json
+✅ New database saved to foodtrucks.json
+
+🎉 Database updated successfully with real Yelp data!
+
+You can now run: npm start
