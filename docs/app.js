@@ -170,7 +170,7 @@ function createTruckCard(truck) {
     }
     
     return `
-        <div class="truck-card" onclick="window.open('${link}', '_blank')">
+        <a href="truck/index.html?id=${truck.id}" class="truck-card" style="text-decoration: none; color: inherit;">
             <img src="${truck.image}" alt="${truck.name}" class="truck-image" 
                  onerror="this.src='https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=400'">
             <div class="truck-content">
@@ -196,6 +196,6 @@ function createTruckCard(truck) {
                     ${truck.verified ? '<span class="verified-badge"><span>✓</span> Verified</span>' : ''}
                 </div>
             </div>
-        </div>
+        </a>
     `;
 }

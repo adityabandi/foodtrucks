@@ -1,0 +1,523 @@
+/* Food Truck Detail Page Styles */
+
+/* Loading State */
+.loading-container, .error-container {
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+}
+
+.loading-spinner {
+    font-size: 64px;
+    animation: bounce 1s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+.error-content {
+    text-align: center;
+    max-width: 500px;
+}
+
+.error-content h1 {
+    font-family: 'Impact', sans-serif;
+    font-size: 48px;
+    color: var(--cherry-red);
+    margin-bottom: 20px;
+}
+
+/* Hero Section */
+.truck-hero {
+    position: relative;
+    height: 500px;
+    overflow: hidden;
+}
+
+.truck-hero-image {
+    width: 100%;
+    height: 100%;
+}
+
+.truck-hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.truck-hero-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.9));
+    padding: 60px 0 30px;
+    color: white;
+}
+
+.breadcrumb {
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    margin-bottom: 15px;
+    opacity: 0.9;
+}
+
+.breadcrumb a {
+    color: var(--cream);
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+.truck-title {
+    font-family: 'Impact', sans-serif;
+    font-size: 56px;
+    margin: 0 0 15px 0;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+    line-height: 1.1;
+}
+
+.truck-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    font-family: 'Courier New', monospace;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.truck-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Content Grid */
+.truck-content {
+    padding: 60px 0;
+    background: var(--cream);
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Content Cards */
+.content-card {
+    background: white;
+    border-radius: 8px;
+    padding: 40px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.content-card h2 {
+    font-family: 'Impact', sans-serif;
+    font-size: 32px;
+    color: var(--cherry-red);
+    margin: 0 0 20px 0;
+}
+
+.content-card h3 {
+    font-family: 'Impact', sans-serif;
+    font-size: 24px;
+    color: var(--dark-gray);
+    margin: 30px 0 15px 0;
+}
+
+.content-card p {
+    font-family: 'Courier New', monospace;
+    line-height: 1.8;
+    margin-bottom: 15px;
+    font-size: 15px;
+}
+
+.content-card ul {
+    font-family: 'Courier New', monospace;
+    line-height: 1.8;
+    margin-left: 20px;
+}
+
+.content-card li {
+    margin-bottom: 10px;
+}
+
+/* Specialties Grid */
+.specialties-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.specialty-item {
+    background: var(--cream);
+    padding: 15px 20px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border: 2px solid var(--cherry-red);
+}
+
+.specialty-icon {
+    font-size: 24px;
+}
+
+.specialty-name {
+    font-family: 'Courier New', monospace;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.specialties-note {
+    margin-top: 20px;
+    padding: 20px;
+    background: #FFF9F0;
+    border-left: 4px solid var(--cherry-red);
+    font-style: italic;
+}
+
+/* Why Visit List */
+.why-visit-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.why-visit-list li {
+    padding: 15px 0;
+    padding-left: 40px;
+    position: relative;
+    border-bottom: 1px solid #eee;
+}
+
+.why-visit-list li:before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--cherry-red);
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.why-visit-list li:last-child {
+    border-bottom: none;
+}
+
+/* Rating Display */
+.rating-breakdown {
+    background: var(--cream);
+    border-radius: 8px;
+    padding: 30px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.rating-large {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.rating-number {
+    font-family: 'Impact', sans-serif;
+    font-size: 72px;
+    color: var(--cherry-red);
+}
+
+.rating-stars {
+    font-size: 32px;
+}
+
+.rating-text {
+    font-family: 'Courier New', monospace;
+    color: var(--dark-gray);
+    margin: 10px 0 0 0;
+}
+
+/* Sidebar */
+.sidebar {
+    position: sticky;
+    top: 20px;
+    height: fit-content;
+}
+
+.sidebar-card {
+    background: white;
+    border-radius: 8px;
+    padding: 30px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.sidebar-card h3 {
+    font-family: 'Impact', sans-serif;
+    font-size: 24px;
+    color: var(--cherry-red);
+    margin: 0 0 20px 0;
+}
+
+/* Info List */
+.info-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.info-item:last-child {
+    border-bottom: none;
+}
+
+.info-label {
+    font-family: 'Courier New', monospace;
+    font-weight: 600;
+    color: var(--dark-gray);
+}
+
+.info-value {
+    font-family: 'Courier New', monospace;
+    font-weight: 600;
+    color: var(--cherry-red);
+}
+
+/* Operating Hours */
+.hours-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    font-family: 'Courier New', monospace;
+}
+
+.hours-row:last-child {
+    border-bottom: none;
+}
+
+.day {
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.hours {
+    color: var(--dark-gray);
+}
+
+/* Contact Links */
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.contact-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 15px;
+    background: var(--cream);
+    border-radius: 6px;
+    text-decoration: none;
+    color: var(--dark-gray);
+    font-family: 'Courier New', monospace;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.contact-link:hover {
+    background: var(--cherry-red);
+    color: white;
+    border-color: var(--cherry-red);
+    transform: translateX(5px);
+}
+
+/* Similar Trucks */
+.similar-truck-item {
+    display: flex;
+    gap: 15px;
+    padding: 15px;
+    background: var(--cream);
+    border-radius: 8px;
+    text-decoration: none;
+    color: inherit;
+    margin-bottom: 12px;
+    transition: all 0.3s ease;
+}
+
+.similar-truck-item:hover {
+    background: white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+}
+
+.similar-truck-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 6px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.similar-truck-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.similar-truck-info {
+    flex: 1;
+}
+
+.similar-truck-info h4 {
+    font-family: 'Impact', sans-serif;
+    font-size: 16px;
+    margin: 0 0 5px 0;
+    color: var(--cherry-red);
+}
+
+.similar-truck-info p {
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    color: var(--dark-gray);
+    margin: 0 0 5px 0;
+}
+
+.similar-rating {
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--dark-gray);
+}
+
+/* SEO Content Section */
+.seo-content {
+    background: white;
+    padding: 60px 0;
+    border-top: 3px solid var(--cherry-red);
+}
+
+/* CTA Section */
+.cta-section {
+    background: linear-gradient(135deg, var(--cherry-red) 0%, #A0082B 100%);
+    padding: 80px 0;
+    text-align: center;
+    color: white;
+}
+
+.cta-section h2 {
+    font-family: 'Impact', sans-serif;
+    font-size: 48px;
+    margin: 0 0 15px 0;
+}
+
+.cta-section p {
+    font-family: 'Courier New', monospace;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-primary, .btn-secondary {
+    padding: 15px 40px;
+    font-family: 'Impact', sans-serif;
+    font-size: 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.btn-primary {
+    background: white;
+    color: var(--cherry-red);
+}
+
+.btn-primary:hover {
+    background: var(--cream);
+    transform: scale(1.05);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: white;
+    border: 3px solid white;
+}
+
+.btn-secondary:hover {
+    background: white;
+    color: var(--cherry-red);
+    transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .sidebar {
+        position: static;
+    }
+    
+    .truck-title {
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .truck-hero {
+        height: 400px;
+    }
+    
+    .truck-title {
+        font-size: 32px;
+    }
+    
+    .content-card {
+        padding: 25px;
+    }
+    
+    .specialties-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .cta-section h2 {
+        font-size: 36px;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn-primary, .btn-secondary {
+        width: 100%;
+        max-width: 300px;
+    }
+}
